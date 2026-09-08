@@ -432,13 +432,13 @@
       <div class="action-container">
         <div class="email-card-wrapper" style="position: relative;">
           <div id="toast" class="toast">Address copied</div>
-          <a class="email-card" href="mailto:home@newberncollection.com?subject=Inquiry%20%E2%80%94%20New%20Bern%20Collection" title="Email home@newberncollection.com">
+          <a class="email-card" href="mailto:team@newberncollection.com?subject=Inquiry%20%E2%80%94%20New%20Bern%20Collection" title="Email team@newberncollection.com">
             <!-- Architectural Single-Weight Mail Icon -->
             <svg class="icon-mail" viewBox="0 0 24 24">
               <rect x="2" y="4" width="20" height="16"/>
               <path d="m22 7-10 7L2 7"/>
             </svg>
-            <span>home@newberncollection.com</span>
+            <span>team@newberncollection.com</span>
             <button class="copy-btn" id="copyBtn" type="button" title="Copy email address" onclick="event.preventDefault(); copyAddress();">copy</button>
           </a>
         </div>
@@ -469,7 +469,7 @@
 
   <script>
     function copyAddress() {
-      const email = 'home@newberncollection.com';
+      const email = 'team@newberncollection.com';
       navigator.clipboard.writeText(email).then(() => {
         const toast = document.getElementById('toast');
         toast.classList.add('show');

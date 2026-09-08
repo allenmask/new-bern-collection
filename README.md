@@ -4,7 +4,7 @@ A minimalist, architectural coming soon site for **newberncollection.com**, buil
 
 ## Quick Links
 - **Domain**: [newberncollection.com](https://newberncollection.com)
-- **Contact Email**: `home@newberncollection.com`
+- **Contact Email**: `team@newberncollection.com`
 
 ---
 
@@ -49,13 +49,13 @@ In your Squarespace account:
 
 ---
 
-## Email Forwarding Setup (home@newberncollection.com -> Gmail)
+## Email Forwarding Setup (team@newberncollection.com -> Gmail)
 
 Squarespace Domains includes free email forwarding:
 1. In Squarespace, go to **Domains** -> select `newberncollection.com`.
 2. Click **Email** (or **Email Forwarding** in the left sidebar).
 3. Click **Add Rule** (or **Add Forward**):
-   - **Alias / Forward from**: `home` (making it `home@newberncollection.com`)
+   - **Alias / Forward from**: `team` (making it `team@newberncollection.com`)
    - **Forward to**: your personal `@gmail.com` address.
 4. Squarespace will send a verification email to your Gmail address.
 5. Open your Gmail, click the **Verify** confirmation link, and forwarding will be active immediately.
