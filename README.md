@@ -1,6 +1,6 @@
-# New Bern Collection — Placeholder & Coming Soon
+# New Bern Collection — Placeholder Site
 
-A minimalist, architectural coming soon site for **newberncollection.com**, built according to the New Bern Collection brand identity guidelines.
+A clean, responsive placeholder site for **newberncollection.com**.
 
 ## Quick Links
 - **Domain**: [newberncollection.com](https://newberncollection.com)
@@ -11,26 +11,24 @@ A minimalist, architectural coming soon site for **newberncollection.com**, buil
 ## Deployment & Hosting Workflow (GitHub Pages + Squarespace)
 
 ### 1. Push to GitHub
-Create a repository on GitHub named `newberncollection` (or `newberncollection-site`) on your account (`allenmask`), then run:
+Repository: `https://github.com/allenmask/new-bern-collection.git`
 
 ```bash
 cd /Users/allenmask/newberncollection-site
-git init -b main
 git add .
-git commit -m "Initial release: New Bern Collection coming soon site"
-git remote add origin https://github.com/allenmask/newberncollection.git
-git push -u origin main
+git commit -m "Update placeholder site"
+git push origin main
 ```
 
 ### 2. Enable GitHub Pages
-1. Go to your repository on GitHub: `https://github.com/allenmask/newberncollection/settings/pages`
+1. Go to your repository settings: `https://github.com/allenmask/new-bern-collection/settings/pages`
 2. Under **Build and deployment**:
    - Source: **Deploy from a branch**
    - Branch: `main` / `/ (root)`
    - Click **Save**
 3. Under **Custom domain**:
    - Enter: `newberncollection.com`
-   - Click **Save** (this will verify the `CNAME` file already in this repo)
+   - Click **Save** (this will verify the `CNAME` file in this repo)
    - Check **Enforce HTTPS** (once DNS has propagated)
 
 ---
@@ -38,7 +36,7 @@ git push -u origin main
 ## Squarespace DNS Configuration
 
 In your Squarespace account:
-1. Navigate to **Domains** -> click `newberncollection.com` -> **DNS Settings** (or **Edit DNS**).
+1. Navigate to **Domains** -> click `newberncollection.com` -> **DNS Settings**.
 2. Add the **4 GitHub Pages Apex A Records**:
    - **Type**: `A` | **Host**: `@` | **Data**: `185.199.108.153`
    - **Type**: `A` | **Host**: `@` | **Data**: `185.199.109.153`

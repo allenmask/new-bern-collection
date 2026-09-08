@@ -1,13 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
-  <rect width="128" height="128" rx="20" fill="#1A1C1E"/>
-  <g transform="translate(14, 14)">
-    <!-- Cantilevered Gable (Pollinator Gold) -->
-    <path d="M 16 14 L 84 14 L 84 48" stroke="#D99B26" stroke-width="6" stroke-linecap="square" stroke-linejoin="miter"/>
-    <path d="M 16 23 L 84 48" stroke="#D99B26" stroke-width="6" stroke-linecap="square"/>
-    
-    <!-- Foundation, Porch & Column (SW Alabaster / Crisp White) -->
-    <path d="M 16 33 L 16 86 L 84 86" stroke="#F4F1EA" stroke-width="6" stroke-linecap="square" stroke-linejoin="miter"/>
-    <path d="M 16 42 L 84 67" stroke="#F4F1EA" stroke-width="6" stroke-linecap="square"/>
-    <line x1="56" y1="86" x2="56" y2="57" stroke="#F4F1EA" stroke-width="6" stroke-linecap="square"/>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <!-- Upper triangle: Pollinator Gold (Roofline & Afternoon Light) -->
+  <polygon points="10,10 87,10 10,87" fill="#D99B26" />
+  <!-- Lower triangle: Canopy Green (Ground & Oak Canopy) -->
+  <polygon points="90,90 13,90 90,13" fill="#244033" />
 </svg>
