@@ -164,34 +164,29 @@
       color: var(--text-muted);
       letter-spacing: 0.01em;
       white-space: nowrap;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
-    /* Minimal Mail Icon Button (Starts email to team@) */
+    /* Minimal Mail Icon (Standalone icon, no circular enclosure) */
     .mail-icon-btn {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      color: var(--text);
+      background: none;
+      border: none;
+      box-shadow: none;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      color: var(--text-muted);
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      padding: 8px;
       cursor: pointer;
       text-decoration: none;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .mail-icon-btn:hover {
-      background: rgba(255, 255, 255, 0.12);
-      border-color: var(--gold);
-      color: #ffffff;
-      transform: scale(1.08) translateY(-2px);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4), 0 0 18px var(--gold-glow);
+      color: var(--gold);
+      transform: scale(1.12) translateY(-1px);
     }
 
     .mail-icon-btn:active {
@@ -199,13 +194,14 @@
     }
 
     .mail-icon-btn svg {
-      width: 19px;
-      height: 19px;
+      width: 21px;
+      height: 21px;
       stroke: currentColor;
-      stroke-width: 1.75;
+      stroke-width: 1.65;
       fill: none;
       stroke-linecap: round;
       stroke-linejoin: round;
+      transition: stroke 0.2s ease;
     }
 
     /* Planetary Orbit Nodes (Generous negative space) */
@@ -452,7 +448,7 @@
       <h1 class="brand-title">New Bern Collection</h1>
       <p class="brand-tagline">Live, work and play in Downtown Raleigh.</p>
 
-      <!-- Minimal Mail Icon Action -->
+      <!-- Minimal Mail Icon Action (Standalone icon without circle enclosure) -->
       <a href="mailto:team@newberncollection.com?subject=Inquiry%20%E2%80%94%20New%20Bern%20Collection" 
          onclick="handleEmailClick(event)" 
          class="mail-icon-btn" 
