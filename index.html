@@ -22,15 +22,17 @@
     :root {
       --bg: #0b0c0e;
       --gold: #D99B26;
-      --gold-glow: rgba(217, 155, 38, 0.22);
+      --gold-glow: rgba(217, 155, 38, 0.28);
       --green: #244033;
+      --airbnb: #FF5A5F;
       --text: #ffffff;
       --text-muted: #9aa0a6;
       --text-dim: #5f6368;
       --orbit-line: rgba(255, 255, 255, 0.08);
-      --node-bg: rgba(255, 255, 255, 0.035);
-      --node-border: rgba(255, 255, 255, 0.12);
-      --node-hover-bg: rgba(255, 255, 255, 0.07);
+      --node-active-bg: rgba(255, 255, 255, 0.06);
+      --node-active-border: rgba(217, 155, 38, 0.55);
+      --node-muted-bg: rgba(255, 255, 255, 0.02);
+      --node-muted-border: rgba(255, 255, 255, 0.09);
     }
 
     * {
@@ -66,8 +68,8 @@
     /* Outer Constellation Stage */
     .system-stage {
       position: relative;
-      width: min(92vw, 560px);
-      height: min(92vw, 560px);
+      width: min(92vw, 590px);
+      height: min(92vw, 590px);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -84,17 +86,18 @@
       pointer-events: none;
     }
 
+    /* Primary track aligned exactly with the 39% radius orbit */
     .orbit-ring-primary {
-      width: 76%;
-      height: 76%;
+      width: 78%;
+      height: 78%;
       border: 1px dashed var(--orbit-line);
       animation: slowSpin 240s linear infinite;
     }
 
     .orbit-ring-ambient {
-      width: 96%;
-      height: 96%;
-      border: 1px solid rgba(255, 255, 255, 0.03);
+      width: 98%;
+      height: 98%;
+      border: 1px solid rgba(255, 255, 255, 0.025);
     }
 
     @keyframes slowSpin {
@@ -110,22 +113,22 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      width: 64%;
-      max-width: 320px;
-      padding: 10px;
+      width: 60%;
+      max-width: 300px;
+      padding: 8px;
     }
 
     /* Architectural Brand Mark */
     .brand-mark {
-      width: clamp(52px, 12vw, 68px);
-      height: clamp(52px, 12vw, 68px);
+      width: clamp(52px, 11vw, 66px);
+      height: clamp(52px, 11vw, 66px);
       border-radius: 18px;
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(255, 255, 255, 0.1);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 35px rgba(217, 155, 38, 0.08);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
@@ -146,7 +149,7 @@
     /* Master Brand Title */
     .brand-title {
       font-family: 'Newsreader', Georgia, serif;
-      font-size: clamp(1.45rem, 4.4vw, 1.95rem);
+      font-size: clamp(1.45rem, 4vw, 1.95rem);
       font-weight: 500;
       letter-spacing: -0.02em;
       color: var(--text);
@@ -157,12 +160,12 @@
 
     /* Single-Line Proposition */
     .brand-tagline {
-      font-size: clamp(0.72rem, 2.2vw, 0.88rem);
+      font-size: clamp(0.70rem, 2vw, 0.85rem);
       font-weight: 500;
       color: var(--text-muted);
       letter-spacing: 0.01em;
       white-space: nowrap;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     /* Minimal Mail Icon Button (Starts email to team@) */
@@ -206,81 +209,153 @@
       stroke-linejoin: round;
     }
 
-    /* Five Planetary Orbit Nodes */
+    /* Planetary Orbit Nodes (More generous negative space) */
     .planet-node {
       position: absolute;
-      width: clamp(66px, 16vw, 84px);
-      height: clamp(66px, 16vw, 84px);
+      width: clamp(76px, 18.5vw, 98px);
+      height: clamp(76px, 18.5vw, 98px);
       border-radius: 50%;
-      background: var(--node-bg);
-      border: 1px solid var(--node-border);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 6px;
+      padding: 12px;
       text-decoration: none;
-      color: var(--text);
-      cursor: pointer;
       z-index: 15;
       transform: translate(-50%, -50%);
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .planet-node:hover {
-      background: var(--node-hover-bg);
-      border-color: var(--gold);
-      transform: translate(-50%, -50%) scale(1.09);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45), 0 0 22px var(--gold-glow);
-    }
-
-    .planet-node:active {
-      transform: translate(-50%, -50%) scale(0.98);
-    }
-
     .planet-label {
-      font-size: clamp(0.66rem, 1.8vw, 0.78rem);
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      line-height: 1.22;
-      color: var(--text);
+      font-size: clamp(0.58rem, 1.4vw, 0.69rem);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      line-height: 1.35;
+      text-transform: uppercase;
       user-select: none;
     }
 
+    /* -------------------------------------------------------------
+       1. ACTIVE HERO NODE: CLUB HOUSE (Bookable via Airbnb)
+    ------------------------------------------------------------- */
+    .planet-active {
+      background: var(--node-active-bg);
+      border: 1.5px solid var(--node-active-border);
+      color: #ffffff;
+      opacity: 1;
+      cursor: pointer;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.42), 0 0 22px rgba(217, 155, 38, 0.12);
+    }
+
+    .planet-active .planet-label {
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .planet-active:hover {
+      background: rgba(255, 255, 255, 0.10);
+      border-color: var(--gold);
+      transform: translate(-50%, -50%) scale(1.08);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55), 0 0 28px var(--gold-glow);
+    }
+
+    .planet-active:active {
+      transform: translate(-50%, -50%) scale(0.98);
+    }
+
+    /* Airbnb Bélo Badge (Upper right shoulder of Club House) */
+    .airbnb-badge {
+      position: absolute;
+      top: -3px;
+      right: -3px;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: #0e1013;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      transition: all 0.25s ease;
+      color: var(--airbnb);
+    }
+
+    .planet-active:hover .airbnb-badge {
+      border-color: var(--airbnb);
+      transform: scale(1.1);
+      box-shadow: 0 6px 14px rgba(255, 90, 95, 0.35);
+    }
+
+    .airbnb-badge svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+    }
+
+    /* -------------------------------------------------------------
+       2. MUTED / GREY-ISH TREATMENT FOR UPCOMING NODES
+    ------------------------------------------------------------- */
+    .planet-muted {
+      background: var(--node-muted-bg);
+      border: 1px dashed var(--node-muted-border);
+      color: rgba(255, 255, 255, 0.45);
+      opacity: 0.34;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    }
+
+    .planet-muted .planet-label {
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    /* Subdued hover state (stays grey-ish, no gold glow) */
+    .planet-muted:hover {
+      background: rgba(255, 255, 255, 0.035);
+      border-color: rgba(255, 255, 255, 0.22);
+      border-style: solid;
+      opacity: 0.55;
+      transform: translate(-50%, -50%) scale(1.02);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    .planet-muted:active {
+      transform: translate(-50%, -50%) scale(0.98);
+    }
+
     /* 
-      Trigonometric Coordinates for 5 Planets at 38% radius:
-      Angle 0: Top (-90°)              -> x=50%,    y=12%
-      Angle 1: Top-Right (-18°)        -> x=86.1%,  y=38.3%
-      Angle 2: Bottom-Right (+54°)     -> x=72.3%,  y=80.7%
-      Angle 3: Bottom-Left (+126°)     -> x=27.7%,  y=80.7%
-      Angle 4: Top-Left (+198°)        -> x=13.9%,  y=38.3%
+      Trigonometric Coordinates for 5 Planets at 39% radius:
+      Angle 0: Top (-90°)              -> x=50.0%,  y=11.0%
+      Angle 1: Top-Right (-18°)        -> x=87.1%,  y=37.9%
+      Angle 2: Bottom-Right (+54°)     -> x=72.9%,  y=81.6%
+      Angle 3: Bottom-Left (+126°)     -> x=27.1%,  y=81.6%
+      Angle 4: Top-Left (+198°)        -> x=12.9%,  y=37.9%
     */
     .planet-rooftop {
-      top: 12%;
+      top: 11%;
       left: 50%;
     }
 
     .planet-clubhouse {
-      top: 38.3%;
-      left: 86.1%;
+      top: 37.9%;
+      left: 87.1%;
     }
 
     .planet-workshop {
-      top: 80.7%;
-      left: 72.3%;
+      top: 81.6%;
+      left: 72.9%;
     }
 
     .planet-apartment {
-      top: 80.7%;
-      left: 27.7%;
+      top: 81.6%;
+      left: 27.1%;
     }
 
     .planet-greenehouse {
-      top: 38.3%;
-      left: 13.9%;
+      top: 37.9%;
+      left: 12.9%;
     }
 
     /* Subtle Bottom Copyright */
@@ -319,20 +394,31 @@
       transform: translateX(-50%) translateY(0);
     }
 
-    /* Very small screens adjustment */
+    /* Very small mobile screens */
     @media (max-width: 400px) {
       .system-stage {
-        width: 95vw;
-        height: 95vw;
+        width: 96vw;
+        height: 96vw;
       }
       .brand-title {
         font-size: 1.35rem;
       }
       .brand-tagline {
-        font-size: 0.68rem;
+        font-size: 0.66rem;
+      }
+      .planet-node {
+        padding: 8px;
       }
       .planet-label {
-        font-size: 0.62rem;
+        font-size: 0.55rem;
+      }
+      .airbnb-badge {
+        width: 21px;
+        height: 21px;
+      }
+      .airbnb-badge svg {
+        width: 12px;
+        height: 12px;
       }
     }
   </style>
@@ -375,43 +461,53 @@
     </div>
 
     <!-- The Five Orbital Satellites / Planets -->
-    <!-- 1. The Rooftop (Top Apex) -->
+
+    <!-- 1. The Rooftop (Top Apex - Muted) -->
     <a href="mailto:team@newberncollection.com?subject=Inquiry%20%E2%80%94%20The%20Rooftop" 
-       onclick="handlePlanetClick(event, 'The Rooftop')" 
-       class="planet-node planet-rooftop" 
-       title="The Rooftop — Inquire / Book">
+       onclick="handleMutedClick(event, 'The Rooftop')" 
+       class="planet-node planet-muted planet-rooftop" 
+       title="The Rooftop — Booking Coming Soon">
       <span class="planet-label">The<br>Rooftop</span>
     </a>
 
-    <!-- 2. Club House (Top Right) -->
-    <a href="mailto:team@newberncollection.com?subject=Inquiry%20%E2%80%94%20Club%20House" 
-       onclick="handlePlanetClick(event, 'Club House')" 
-       class="planet-node planet-clubhouse" 
-       title="Club House — Inquire / Book">
+    <!-- 2. Club House (Top Right - ACTIVE HERO NODE with Airbnb Bélo Badge) -->
+    <a href="https://www.airbnb.com" 
+       id="clubHouseLink"
+       target="_blank" 
+       rel="noopener noreferrer"
+       onclick="handleClubHouseClick(event)" 
+       class="planet-node planet-active planet-clubhouse" 
+       title="Club House — Book on Airbnb">
       <span class="planet-label">Club<br>House</span>
+      <!-- Airbnb Bélo Icon Badge -->
+      <div class="airbnb-badge" title="Book on Airbnb" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
+          <path d="M12.001 18.275c-1.353-1.697-2.148-3.184-2.413-4.457-.263-1.027-.16-1.848.291-2.465.477-.71 1.188-1.056 2.121-1.056s1.643.345 2.12 1.063c.446.61.558 1.432.286 2.465-.291 1.298-1.085 2.785-2.412 4.458zm9.601 1.14c-.185 1.246-1.034 2.28-2.2 2.783-2.253.98-4.483-.583-6.392-2.704 3.157-3.951 3.74-7.028 2.385-9.018-.795-1.14-1.933-1.695-3.394-1.695-2.944 0-4.563 2.49-3.927 5.382.37 1.565 1.352 3.343 2.917 5.332-.98 1.085-1.91 1.856-2.732 2.333-.636.344-1.245.558-1.828.609-2.679.399-4.778-2.2-3.825-4.88.132-.345.395-.98.845-1.961l.025-.053c1.464-3.178 3.242-6.79 5.285-10.795l.053-.132.58-1.116c.45-.822.635-1.19 1.351-1.643.346-.21.77-.315 1.246-.315.954 0 1.698.558 2.016 1.007.158.239.345.557.582.953l.558 1.089.08.159c2.041 4.004 3.821 7.608 5.279 10.794l.026.025.533 1.22.318.764c.243.613.294 1.222.213 1.858zm1.22-2.39c-.186-.583-.505-1.271-.9-2.094v-.03c-1.889-4.006-3.642-7.608-5.307-10.844l-.111-.163C15.317 1.461 14.468 0 12.001 0c-2.44 0-3.476 1.695-4.535 3.898l-.081.16c-1.669 3.236-3.421 6.843-5.303 10.847v.053l-.559 1.22c-.21.504-.317.768-.345.847C-.172 20.74 2.611 24 5.98 24c.027 0 .132 0 .265-.027h.372c1.75-.213 3.554-1.325 5.384-3.317 1.829 1.989 3.635 3.104 5.382 3.317h.372c.133.027.239.027.265.027 3.37.003 6.152-3.261 4.802-6.975z"/>
+        </svg>
+      </div>
     </a>
 
-    <!-- 3. The Workshop (Bottom Right) -->
+    <!-- 3. The Workshop (Bottom Right - Muted) -->
     <a href="mailto:team@newberncollection.com?subject=Inquiry%20%E2%80%94%20The%20Workshop" 
-       onclick="handlePlanetClick(event, 'The Workshop')" 
-       class="planet-node planet-workshop" 
-       title="The Workshop — Inquire / Book">
+       onclick="handleMutedClick(event, 'The Workshop')" 
+       class="planet-node planet-muted planet-workshop" 
+       title="The Workshop — Booking Coming Soon">
       <span class="planet-label">The<br>Workshop</span>
     </a>
 
-    <!-- 4. The Apartment (Bottom Left) -->
+    <!-- 4. The Apartment (Bottom Left - Muted) -->
     <a href="mailto:team@newberncollection.com?subject=Inquiry%20%E2%80%94%20The%20Apartment" 
-       onclick="handlePlanetClick(event, 'The Apartment')" 
-       class="planet-node planet-apartment" 
-       title="The Apartment — Inquire / Book">
+       onclick="handleMutedClick(event, 'The Apartment')" 
+       class="planet-node planet-muted planet-apartment" 
+       title="The Apartment — Booking Coming Soon">
       <span class="planet-label">The<br>Apartment</span>
     </a>
 
-    <!-- 5. Greene House (Top Left) -->
+    <!-- 5. Greene House (Top Left - Muted) -->
     <a href="mailto:team@newberncollection.com?subject=Inquiry%20%E2%80%94%20Greene%20House" 
-       onclick="handlePlanetClick(event, 'Greene House')" 
-       class="planet-node planet-greenehouse" 
-       title="Greene House — Inquire / Book">
+       onclick="handleMutedClick(event, 'Greene House')" 
+       class="planet-node planet-muted planet-greenehouse" 
+       title="Greene House — Booking Coming Soon">
       <span class="planet-label">Greene<br>House</span>
     </a>
 
@@ -427,7 +523,12 @@
   <script>
     const email = 'team@newberncollection.com';
 
-    // Center Mail Icon: Starts email to team@ and copies to clipboard
+    // Airbnb listing URL for Club House (replace with specific listing ID whenever ready)
+    const AIRBNB_CLUBHOUSE_URL = 'https://www.airbnb.com';
+
+    document.getElementById('clubHouseLink').setAttribute('href', AIRBNB_CLUBHOUSE_URL);
+
+    // Center Mail Icon: Starts email to team@ and copies address
     function handleEmailClick(e) {
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(email).catch(() => {});
@@ -436,12 +537,17 @@
       window.location.href = 'mailto:' + email + '?subject=' + encodeURIComponent('Inquiry — New Bern Collection');
     }
 
-    // Planet Click: Launches 1:1 inquiry for that specific space & copies team@
-    function handlePlanetClick(e, placeName) {
+    // Active Club House Click: Redirects to Airbnb
+    function handleClubHouseClick(e) {
+      showToast('Redirecting to Club House on Airbnb...');
+    }
+
+    // Muted / Upcoming Spaces: Informs user booking is coming soon and offers 1:1 email inquiry
+    function handleMutedClick(e, placeName) {
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(email).catch(() => {});
       }
-      showToast(`Inquiring about ${placeName} — opening email to team@`);
+      showToast(`${placeName} booking opening soon — opening email to team@`);
       window.location.href = 'mailto:' + email + '?subject=' + encodeURIComponent('Booking Inquiry — ' + placeName);
     }
 
