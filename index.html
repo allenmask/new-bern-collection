@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>New Bern Collection — Downtown Raleigh</title>
-  <meta name="description" content="New Bern Collection — Modern life, work, and play in Downtown Raleigh." />
+  <meta name="description" content="New Bern Collection — Live, work and play in Downtown Raleigh." />
   <meta property="og:title" content="New Bern Collection" />
-  <meta property="og:description" content="Modern life, work, and play in Downtown Raleigh." />
+  <meta property="og:description" content="Live, work and play in Downtown Raleigh." />
   <meta property="og:url" content="https://newberncollection.com" />
   <meta name="twitter:card" content="summary" />
   
@@ -20,42 +20,17 @@
 
   <style>
     :root {
-      --bg: #0c0d10;
-      --bg-ambient: radial-gradient(circle at 50% 0%, #151d19 0%, #0c0d10 70%);
-      --card-bg: rgba(255, 255, 255, 0.05);
-      --card-border: rgba(255, 255, 255, 0.09);
-      --card-hover: rgba(255, 255, 255, 0.09);
-      --card-active: rgba(255, 255, 255, 0.13);
+      --bg: #0b0c0e;
+      --gold: #D99B26;
+      --gold-glow: rgba(217, 155, 38, 0.22);
+      --green: #244033;
       --text: #ffffff;
-      --text-muted: #9499a6;
-      --text-dim: #646a79;
-      --accent-gold: #D99B26;
-      --accent-green: #244033;
-      --badge-bg: rgba(255, 255, 255, 0.07);
-      --badge-border: rgba(255, 255, 255, 0.12);
-      --icon-bg: rgba(255, 255, 255, 0.07);
-      --icon-hover: rgba(255, 255, 255, 0.15);
-      --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.35);
-      --radius: 20px;
-      --radius-sm: 14px;
-      --radius-pill: 9999px;
-    }
-
-    [data-theme="light"] {
-      --bg: #f8f8f6;
-      --bg-ambient: radial-gradient(circle at 50% 0%, #eaece8 0%, #f8f8f6 70%);
-      --card-bg: #ffffff;
-      --card-border: rgba(0, 0, 0, 0.08);
-      --card-hover: #fafaf8;
-      --card-active: #f1f2ee;
-      --text: #161718;
-      --text-muted: #64748b;
-      --text-dim: #94a3b8;
-      --badge-bg: rgba(0, 0, 0, 0.05);
-      --badge-border: rgba(0, 0, 0, 0.08);
-      --icon-bg: #f1f3ef;
-      --icon-hover: #e6e9e3;
-      --shadow-card: 0 6px 24px rgba(0, 0, 0, 0.06);
+      --text-muted: #9aa0a6;
+      --text-dim: #5f6368;
+      --orbit-line: rgba(255, 255, 255, 0.08);
+      --node-bg: rgba(255, 255, 255, 0.035);
+      --node-border: rgba(255, 255, 255, 0.12);
+      --node-hover-bg: rgba(255, 255, 255, 0.07);
     }
 
     * {
@@ -65,224 +40,275 @@
       -webkit-tap-highlight-color: transparent;
     }
 
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+    }
+
     body {
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       background: var(--bg);
-      background-image: var(--bg-ambient);
-      background-attachment: fixed;
+      background-image: 
+        radial-gradient(circle at 50% 50%, rgba(217, 155, 38, 0.07) 0%, rgba(36, 64, 51, 0.09) 36%, transparent 72%),
+        radial-gradient(circle at 50% 10%, rgba(255, 255, 255, 0.02) 0%, transparent 60%);
       color: var(--text);
       min-height: 100vh;
       min-height: 100dvh;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 24px 18px;
-      transition: background 0.3s ease, color 0.3s ease;
+      padding: 24px 16px;
+      position: relative;
     }
 
-    .container-wrapper {
-      width: 100%;
-      max-width: 440px;
+    /* Outer Constellation Stage */
+    .system-stage {
+      position: relative;
+      width: min(92vw, 560px);
+      height: min(92vw, 560px);
       display: flex;
-      flex-direction: column;
-      gap: 28px;
+      justify-content: center;
+      align-items: center;
       margin: auto;
     }
 
-    /* Top Utility Bar */
-    .top-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-    }
-
-    .brand-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 14px;
-      border-radius: var(--radius-pill);
-      background: var(--badge-bg);
-      border: 1px solid var(--badge-border);
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-
-    .top-actions {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .btn-icon {
-      width: 38px;
-      height: 38px;
+    /* Orbital Track Hairlines */
+    .orbit-ring {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       border-radius: 50%;
-      background: var(--badge-bg);
-      border: 1px solid var(--badge-border);
-      color: var(--text);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      transition: all 0.2s ease;
+      pointer-events: none;
     }
 
-    .btn-icon:hover {
-      background: var(--icon-hover);
-      transform: scale(1.05);
+    .orbit-ring-primary {
+      width: 76%;
+      height: 76%;
+      border: 1px dashed var(--orbit-line);
+      animation: slowSpin 240s linear infinite;
     }
 
-    /* Main Card Hero */
-    .hero-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      box-shadow: var(--shadow-card);
-      padding: 44px 28px 36px;
-      text-align: center;
+    .orbit-ring-ambient {
+      width: 96%;
+      height: 96%;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    @keyframes slowSpin {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    /* Central Sun / Core Brand Monolith */
+    .system-center {
+      position: relative;
+      z-index: 10;
       display: flex;
       flex-direction: column;
       align-items: center;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.3s ease;
+      text-align: center;
+      width: 64%;
+      max-width: 320px;
+      padding: 10px;
     }
 
-    .hero-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    }
-
-    /* Architectural Logo Mark */
-    .logo-container {
-      width: 80px;
-      height: 80px;
-      border-radius: 20px;
-      background: var(--badge-bg);
-      border: 1px solid var(--badge-border);
+    /* Architectural Brand Mark */
+    .brand-mark {
+      width: clamp(52px, 12vw, 68px);
+      height: clamp(52px, 12vw, 68px);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 24px;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
-      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      margin-bottom: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 35px rgba(217, 155, 38, 0.08);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
     }
 
-    .hero-card:hover .logo-container {
-      transform: scale(1.04);
+    .brand-mark:hover {
+      transform: scale(1.05);
+      border-color: rgba(217, 155, 38, 0.4);
     }
 
-    .logo-svg {
-      width: 48px;
-      height: 48px;
+    .brand-mark svg {
+      width: 60%;
+      height: 60%;
       display: block;
     }
 
-    /* Typography */
+    /* Master Brand Title */
     .brand-title {
       font-family: 'Newsreader', Georgia, serif;
-      font-size: 2.1rem;
+      font-size: clamp(1.45rem, 4.4vw, 1.95rem);
       font-weight: 500;
       letter-spacing: -0.02em;
       color: var(--text);
       line-height: 1.15;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
+      white-space: nowrap;
     }
 
-    .brand-description {
-      font-size: 1rem;
+    /* Single-Line Proposition */
+    .brand-tagline {
+      font-size: clamp(0.72rem, 2.2vw, 0.88rem);
       font-weight: 500;
-      line-height: 1.5;
       color: var(--text-muted);
-      max-width: 320px;
-      margin-bottom: 32px;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+      margin-bottom: 18px;
     }
 
-    /* Contact / Inquiries Button */
-    .contact-card {
+    /* Minimal Mail Icon Button (Starts email to team@) */
+    .mail-icon-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: var(--text);
       display: inline-flex;
       align-items: center;
-      gap: 12px;
-      padding: 14px 22px;
-      border-radius: var(--radius-pill);
-      background: var(--badge-bg);
-      border: 1px solid var(--badge-border);
-      color: var(--text);
-      text-decoration: none;
-      font-size: 0.92rem;
-      font-weight: 600;
-      letter-spacing: -0.01em;
+      justify-content: center;
       cursor: pointer;
+      text-decoration: none;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
     }
 
-    .contact-card:hover {
-      background: var(--card-hover);
-      border-color: var(--card-active);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    .mail-icon-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--gold);
+      color: #ffffff;
+      transform: scale(1.08) translateY(-2px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4), 0 0 18px var(--gold-glow);
     }
 
-    .contact-card:active {
-      transform: scale(0.98);
+    .mail-icon-btn:active {
+      transform: scale(0.96);
     }
 
-    .icon-mail {
-      width: 18px;
-      height: 18px;
+    .mail-icon-btn svg {
+      width: 19px;
+      height: 19px;
       stroke: currentColor;
-      stroke-width: 2;
+      stroke-width: 1.75;
       fill: none;
       stroke-linecap: round;
       stroke-linejoin: round;
-      flex-shrink: 0;
     }
 
-    /* Footer */
-    .site-footer {
+    /* Five Planetary Orbit Nodes */
+    .planet-node {
+      position: absolute;
+      width: clamp(66px, 16vw, 84px);
+      height: clamp(66px, 16vw, 84px);
+      border-radius: 50%;
+      background: var(--node-bg);
+      border: 1px solid var(--node-border);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 4px 0 0;
+      padding: 6px;
+      text-decoration: none;
+      color: var(--text);
+      cursor: pointer;
+      z-index: 15;
+      transform: translate(-50%, -50%);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .footer-text {
-      font-size: 0.78rem;
-      font-weight: 500;
-      color: var(--text-dim);
+    .planet-node:hover {
+      background: var(--node-hover-bg);
+      border-color: var(--gold);
+      transform: translate(-50%, -50%) scale(1.09);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45), 0 0 22px var(--gold-glow);
+    }
+
+    .planet-node:active {
+      transform: translate(-50%, -50%) scale(0.98);
+    }
+
+    .planet-label {
+      font-size: clamp(0.66rem, 1.8vw, 0.78rem);
+      font-weight: 600;
       letter-spacing: 0.02em;
-      text-decoration: none;
+      line-height: 1.22;
+      color: var(--text);
+      user-select: none;
+    }
+
+    /* 
+      Trigonometric Coordinates for 5 Planets at 38% radius:
+      Angle 0: Top (-90°)              -> x=50%,    y=12%
+      Angle 1: Top-Right (-18°)        -> x=86.1%,  y=38.3%
+      Angle 2: Bottom-Right (+54°)     -> x=72.3%,  y=80.7%
+      Angle 3: Bottom-Left (+126°)     -> x=27.7%,  y=80.7%
+      Angle 4: Top-Left (+198°)        -> x=13.9%,  y=38.3%
+    */
+    .planet-rooftop {
+      top: 12%;
+      left: 50%;
+    }
+
+    .planet-clubhouse {
+      top: 38.3%;
+      left: 86.1%;
+    }
+
+    .planet-workshop {
+      top: 80.7%;
+      left: 72.3%;
+    }
+
+    .planet-apartment {
+      top: 80.7%;
+      left: 27.7%;
+    }
+
+    .planet-greenehouse {
+      top: 38.3%;
+      left: 13.9%;
+    }
+
+    /* Subtle Bottom Copyright */
+    .site-footer {
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      pointer-events: none;
     }
 
     /* Toast Notification */
     #toast {
       position: fixed;
-      bottom: 28px;
+      bottom: 24px;
       left: 50%;
       transform: translateX(-50%) translateY(100px);
-      background: var(--text);
-      color: var(--bg);
-      padding: 12px 22px;
-      border-radius: var(--radius-pill);
-      font-size: 0.85rem;
+      background: #ffffff;
+      color: #0b0c0e;
+      padding: 11px 22px;
+      border-radius: 9999px;
+      font-size: 0.82rem;
       font-weight: 600;
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       z-index: 999;
       pointer-events: none;
@@ -293,46 +319,37 @@
       transform: translateX(-50%) translateY(0);
     }
 
-    @media (max-width: 480px) {
-      .hero-card {
-        padding: 38px 20px 30px;
+    /* Very small screens adjustment */
+    @media (max-width: 400px) {
+      .system-stage {
+        width: 95vw;
+        height: 95vw;
       }
       .brand-title {
-        font-size: 1.85rem;
+        font-size: 1.35rem;
       }
-      .brand-description {
-        font-size: 0.94rem;
+      .brand-tagline {
+        font-size: 0.68rem;
+      }
+      .planet-label {
+        font-size: 0.62rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="container-wrapper">
+  <div class="system-stage">
 
-    <!-- Top Utility Bar -->
-    <div class="top-bar">
-      <div class="brand-pill">
-        <span>Raleigh, NC</span>
-      </div>
+    <!-- Orbital Hairline Rings -->
+    <div class="orbit-ring orbit-ring-ambient" aria-hidden="true"></div>
+    <div class="orbit-ring orbit-ring-primary" aria-hidden="true"></div>
 
-      <div class="top-actions">
-        <button class="btn-icon" id="shareBtn" title="Share" aria-label="Share">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
-        </button>
-        <button class="btn-icon" id="themeToggle" title="Toggle Theme" aria-label="Theme">
-          <svg id="moonIcon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-          <svg id="sunIcon" style="display:none;" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Centered Hero Card -->
-    <div class="hero-card">
-      
-      <!-- Architectural Brand Mark -->
-      <div class="logo-container" title="New Bern Collection">
-        <svg class="logo-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Center Sun / Hub -->
+    <div class="system-center">
+      <!-- Logo Mark -->
+      <div class="brand-mark" title="New Bern Collection">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
           <!-- Upper triangle: Pollinator Gold -->
           <polygon points="10,10 87,10 10,87" fill="#D99B26" />
           <!-- Lower triangle: Canopy Green -->
@@ -340,83 +357,93 @@
         </svg>
       </div>
 
-      <!-- Title & Proposition -->
+      <!-- Title & Proposition on One Line -->
       <h1 class="brand-title">New Bern Collection</h1>
-      <p class="brand-description">Modern life, work, and play in Downtown Raleigh.</p>
+      <p class="brand-tagline">Live, work and play in Downtown Raleigh.</p>
 
-      <!-- Mail Contact Action -->
-      <a href="mailto:team@newberncollection.com?subject=Inquiry%20%E2%80%94%20New%20Bern%20Collection" onclick="handleEmailClick(event)" class="contact-card" title="team@newberncollection.com">
-        <svg class="icon-mail" viewBox="0 0 24 24">
+      <!-- Minimal Mail Icon Action -->
+      <a href="mailto:team@newberncollection.com?subject=Inquiry%20%E2%80%94%20New%20Bern%20Collection" 
+         onclick="handleEmailClick(event)" 
+         class="mail-icon-btn" 
+         title="Email team@newberncollection.com" 
+         aria-label="Email team@newberncollection.com">
+        <svg viewBox="0 0 24 24">
           <rect width="20" height="16" x="2" y="4" rx="2"></rect>
           <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
         </svg>
-        <span>team@newberncollection.com</span>
       </a>
-
     </div>
 
-    <!-- Footer -->
-    <div class="site-footer">
-      <span class="footer-text">&copy; 2026 New Bern Collection LLC</span>
-    </div>
+    <!-- The Five Orbital Satellites / Planets -->
+    <!-- 1. The Rooftop (Top Apex) -->
+    <a href="mailto:team@newberncollection.com?subject=Inquiry%20%E2%80%94%20The%20Rooftop" 
+       onclick="handlePlanetClick(event, 'The Rooftop')" 
+       class="planet-node planet-rooftop" 
+       title="The Rooftop — Inquire / Book">
+      <span class="planet-label">The<br>Rooftop</span>
+    </a>
+
+    <!-- 2. Club House (Top Right) -->
+    <a href="mailto:team@newberncollection.com?subject=Inquiry%20%E2%80%94%20Club%20House" 
+       onclick="handlePlanetClick(event, 'Club House')" 
+       class="planet-node planet-clubhouse" 
+       title="Club House — Inquire / Book">
+      <span class="planet-label">Club<br>House</span>
+    </a>
+
+    <!-- 3. The Workshop (Bottom Right) -->
+    <a href="mailto:team@newberncollection.com?subject=Inquiry%20%E2%80%94%20The%20Workshop" 
+       onclick="handlePlanetClick(event, 'The Workshop')" 
+       class="planet-node planet-workshop" 
+       title="The Workshop — Inquire / Book">
+      <span class="planet-label">The<br>Workshop</span>
+    </a>
+
+    <!-- 4. The Apartment (Bottom Left) -->
+    <a href="mailto:team@newberncollection.com?subject=Inquiry%20%E2%80%94%20The%20Apartment" 
+       onclick="handlePlanetClick(event, 'The Apartment')" 
+       class="planet-node planet-apartment" 
+       title="The Apartment — Inquire / Book">
+      <span class="planet-label">The<br>Apartment</span>
+    </a>
+
+    <!-- 5. Greene House (Top Left) -->
+    <a href="mailto:team@newberncollection.com?subject=Inquiry%20%E2%80%94%20Greene%20House" 
+       onclick="handlePlanetClick(event, 'Greene House')" 
+       class="planet-node planet-greenehouse" 
+       title="Greene House — Inquire / Book">
+      <span class="planet-label">Greene<br>House</span>
+    </a>
 
   </div>
 
-  <div id="toast">team@newberncollection.com copied to clipboard!</div>
+  <!-- Minimal Footer -->
+  <footer class="site-footer">
+    <span>&copy; 2026 New Bern Collection LLC</span>
+  </footer>
+
+  <div id="toast">Starting email to team@newberncollection.com</div>
 
   <script>
-    // Theme Toggle
-    const toggleBtn = document.getElementById('themeToggle');
-    const moonIcon = document.getElementById('moonIcon');
-    const sunIcon = document.getElementById('sunIcon');
+    const email = 'team@newberncollection.com';
 
-    const savedTheme = localStorage.getItem('nbc_theme') || 'dark';
-    setTheme(savedTheme);
-
-    toggleBtn.addEventListener('click', () => {
-      const current = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
-      setTheme(current === 'dark' ? 'light' : 'dark');
-    });
-
-    function setTheme(theme) {
-      if (theme === 'light') {
-        document.documentElement.setAttribute('data-theme', 'light');
-        moonIcon.style.display = 'block';
-        sunIcon.style.display = 'none';
-      } else {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        moonIcon.style.display = 'none';
-        sunIcon.style.display = 'block';
-      }
-      localStorage.setItem('nbc_theme', theme);
-    }
-
-    // Email Click: Launch Compose & Copy to Clipboard
+    // Center Mail Icon: Starts email to team@ and copies to clipboard
     function handleEmailClick(e) {
-      const email = 'team@newberncollection.com';
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(email).catch(() => {});
       }
-      showToast('team@newberncollection.com copied to clipboard!');
-      // Explicit mailto trigger
+      showToast('Opening email: team@newberncollection.com');
       window.location.href = 'mailto:' + email + '?subject=' + encodeURIComponent('Inquiry — New Bern Collection');
     }
 
-    // Share action
-    document.getElementById('shareBtn').addEventListener('click', async () => {
-      if (navigator.share) {
-        try {
-          await navigator.share({
-            title: 'New Bern Collection',
-            text: 'Modern life, work, and play in Downtown Raleigh.',
-            url: window.location.href,
-          });
-        } catch (err) {}
-      } else {
-        navigator.clipboard.writeText(window.location.href);
-        showToast('Link copied to clipboard!');
+    // Planet Click: Launches 1:1 inquiry for that specific space & copies team@
+    function handlePlanetClick(e, placeName) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).catch(() => {});
       }
-    });
+      showToast(`Inquiring about ${placeName} — opening email to team@`);
+      window.location.href = 'mailto:' + email + '?subject=' + encodeURIComponent('Booking Inquiry — ' + placeName);
+    }
 
     function showToast(msg) {
       const toast = document.getElementById('toast');
@@ -424,7 +451,7 @@
       toast.classList.add('active');
       setTimeout(() => {
         toast.classList.remove('active');
-      }, 2500);
+      }, 2600);
     }
   </script>
 </body>
